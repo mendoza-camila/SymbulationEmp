@@ -135,8 +135,10 @@ public:
    * Purpose: Mutates the genome code stored in the CPU.
    */
   void Mutate() {
-    program.ApplyPointMutations(state.world->GetConfig()->MUTATION_SIZE() *
+    if (state.organism->IsHost()){
+      program.ApplyPointMutations(state.world->GetConfig()->MUTATION_SIZE() *
                                 15.0);
+    }
     InitializeState();
   }
 
